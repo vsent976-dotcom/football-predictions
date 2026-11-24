@@ -28,15 +28,9 @@ jobs:
 
     - name: Run Results Script
       env:
-        API_FOOTBALL_KEY: "38f1c8e59dd3c061104a4ffd98f0fe1e"
+        API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
       run: |
         python scripts/fetch_results.py
-              - name: Send Telegram Notifications
-        env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python scripts/send_telegram.py
-
 
     - name: Commit and Push Changes
       uses: stefanzweifel/git-auto-commit-action@v4
